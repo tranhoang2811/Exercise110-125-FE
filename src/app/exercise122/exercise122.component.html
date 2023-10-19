@@ -1,0 +1,37 @@
+<h3>Delete book</h3>
+<label for="bookId">Book Id:</label>
+<input type="text" id="bookId" [(ngModel)]="bookId">
+<button (click)="deleteBook()">
+    Delete
+</button>
+<div class="container">
+    <table class="table table -hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let book of books">
+                <td>
+                    {{book.BookId}}
+                </td>
+                <td>
+                    {{book.BookName}}
+                </td>
+                <td>
+                    {{book.Price}}
+                </td>
+                <td>
+                    <img [src]="book.Image" width="20px">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div *ngIf="errorMessage">
+        {{errorMessage}}
+    </div>
+</div>

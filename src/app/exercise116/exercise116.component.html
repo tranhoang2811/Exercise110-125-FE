@@ -1,0 +1,36 @@
+<h3>Get book detail</h3>
+<label for="bookId">Book Id:</label>
+<input type="text" id="bookId" [(ngModel)]="bookId">
+<button (click)="getBook()">
+    Get book detail
+</button>
+<div class="container">
+    <table>
+        <tr>
+            <td>Id:</td>
+            <td>
+                {{book?.BookId ?? 'N/A'}}
+            </td>
+        </tr>
+        <tr>
+            <td>Name:</td>
+            <td>
+                {{book?.BookName ?? 'N/A'}}
+            </td>
+        </tr>
+        <tr>
+            <td>Price:</td>
+            <td>
+                {{book?.Price ?? 'N/A'}}
+            </td>
+        </tr>
+        <tr>
+            <td [attr.colspan]="2" style="text-align: center;">
+                <img src="{{book?.Image}}" alt="Book Image" width="40px">
+            </td>
+        </tr>
+    </table>
+    <div *ngIf="errorMessage">
+        {{errorMessage}}
+    </div>
+</div>

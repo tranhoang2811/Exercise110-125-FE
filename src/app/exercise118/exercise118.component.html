@@ -1,0 +1,55 @@
+<h3 class="text-center text-white bg-dark p-3">Create book</h3>
+<div class="contaner">
+    <form [formGroup]="createBookForm" (submit)="onSubmit()">
+        <div>
+            <label for="bookId">
+                Book Id:
+            </label>
+            <input type="text" id="bookId" formControlName="BookId" placeholder="Nhập Book Id">
+        </div>
+        <div>
+            <label for="bookName">
+                Book Name:
+            </label>
+            <input type="text" id="bookName" formControlName="BookName" placeholder="Nhập Book Name">
+        </div>
+        <div>
+            <label for="price">
+                Price:
+            </label>
+            <input type="text" id="price" formControlName="Price" placeholder="0">
+        </div>
+        <button type="submit">
+            Create
+        </button>
+    </form>
+    <table class="table table -hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let book of books">
+                <td>
+                    {{book.BookId}}
+                </td>
+                <td>
+                    {{book.BookName}}
+                </td>
+                <td>
+                    {{book.Price}}
+                </td>
+                <td>
+                    <img [src]="book.Image" width="20px">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div *ngIf="errorMessage">
+        {{errorMessage}}
+    </div>
+</div>
