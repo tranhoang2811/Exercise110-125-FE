@@ -18,4 +18,15 @@ export class UploadService {
       .pipe(retry(3), catchError(this.errorService.handleError));
   }
 
+  public uploadCoverImage(formData: FormData): Observable<string> {
+    return this.httpClient
+      .post<string>('/advance-books/cover-image', formData)
+      .pipe(retry(3), catchError(this.errorService.handleError));
+  }
+
+  public getCoverImage(fileName: string): Observable<Blob> {
+    return this.httpClient
+      .get(`/advance-books/cover-image/${fileName}`, { responseType: 'blob' })
+      .pipe(retry(3), catchError(this.errorService.handleError));
+  }
 }
